@@ -1,0 +1,138 @@
+<div class="wrapper">
+  <header>
+
+    <meta name="viewport" content="height=device-height, 
+                        width=device-width, initial-scale=1.0, 
+                        minimum-scale=1.0, maximum-scale=1.0, 
+                        user-scalable=0, target-densitydpi=device-dpi">
+    
+  
+    <nav *ngIf="isDesktop" class="navbar navBarCust navbar-expand-md navbar-light " >
+      <a class="navbar-brand" style="font-family: Georgia , Helvetica, sans-serif; color: rgb(75, 59, 36);" href="#">
+          
+        <img src="../assets/logo.jpg" alt="app_logo" style="height: 40px;"/> Dharshini Crackers Shop
+        </a>
+      
+      <div class="collapse navbar-collapse justify-content-end"   id="navbarNavAltMarkup">
+        <div class="navbar-nav ">
+          <button  mat-button [routerLink]="['/home']" routerLinkActive="router-link-active" >Home</button>
+          <button  mat-button [routerLink]="['/price-list']" [queryParams]="{id:''}" routerLinkActive="router-link-active" >Price List</button>
+          <button  mat-button [routerLink]="['/about-us']" routerLinkActive="router-link-active" >About Us</button>
+          <button  mat-button [routerLink]="['/contact-us']" routerLinkActive="router-link-active" >Contact Us</button>
+          <button  mat-button [routerLink]="['/orders']" routerLinkActive="router-link-active" >Orders</button>
+        </div>
+      </div>
+    </nav>
+  </header>
+  
+  
+  <main>
+    <router-outlet></router-outlet>
+  </main>
+  
+  
+    <!-- <div fxShow fxHide.xs="false"   fxHide.md="true" fxHide.lg="true">
+      Hello
+    </div> -->
+    
+  <!-- Footer -->
+  <footer class="section footer-classic context-dark bg-image" style="background: #6d3e2b;  padding-top: 10px;">
+    <div class="container">
+      <div class="row row-30">
+        <div class="col-md-4 col-xl-5">
+          <div class="pr-xl-4"><a class="brand" [routerLink]="['/home']" routerLinkActive="router-link-active" ><img class="brand-logo-light" src="../assets/logo.jpg" alt="" width="60" height="37" srcset="../assets/logo.jpg 2x"></a>
+            <p>
+              As per 2018 supreme court order, online sale of firecrackers are not permitted! We give more value to our customers and at the same time,we should respect jurisdiction. We request you to add your products and submit the required crackers through the place order button. We will contact you and confirm the order through phone call. Please submit your quiries and enjoy your Diwali with Dharshini Crackers Shop. Our company follows 100% legal and statutory compliances. In our shop We maintained as per the explosive act. We send the parcels through registered transport service providers Only in time..
+            </p>
+            <!-- Rights-->
+            <p class="rights"><span>©  </span><span class="copyright-year">2022</span><span> </span><span>Waves</span><span>. </span><span>All Rights Reserved.</span></p>
+          </div>
+        </div>
+  
+        <div class="col-md-4" style="margin-bottom: 70px;">
+         
+          <h5>Contacts</h5>
+          <dl class="contact-list">
+            <dt>Name:</dt>
+            <dd>S. Thangam</dd>
+          </dl>
+          <dl class="contact-list">
+            <dt>Address:</dt>
+            <dd>3/1363/3B, Sattur Road,
+              RSR Petrol Bunk Backside,
+              Sivakasi </dd>
+          </dl>
+          <dl class="contact-list">
+            <dt>email:</dt>
+            <dd><a href="mailto:#">dharshinicrackersshop@gmail.com </a></dd>
+          </dl>
+          <dl class="contact-list">
+            <dt>phones:</dt>
+            <dd><a href="tel:+917010857035">7010857035 </a> <br> <a href="tel:+919976074745"> 9976074745</a> <br> <a href="tel:+919751642052"> 9751642052</a>
+            </dd>
+          </dl>
+          <dl class="contact-list">
+            <dt>Whatsapp:</dt>
+            <dd><a target="_blank" href="//api.whatsapp.com/send?phone=+917010857035&text=Hi.." >7010857035 </a> <br> 
+              <a target="_blank" href="//api.whatsapp.com/send?phone=+919976074745&text=Hi.." >9976074745</a>
+            </dd>
+          </dl>
+          <dl class="contact-list" style="bottom: 50px;">
+            <dt>Working Hours:</dt>
+            <dd>
+              Mon - Sun/ 6:00 AM - 12:00 PM 
+            </dd>
+          </dl>
+        </div>
+        <div *ngIf="isDesktop" class="col-md-4 col-xl-3">
+          <h5>Links</h5>
+          <ul class="nav-list">
+            <li><a [routerLink]="['/home']" routerLinkActive="router-link-active" >Home</a></li>
+            <li><a [routerLink]="['/price-list']" routerLinkActive="router-link-active" >Price List</a></li>
+            <li><a [routerLink]="['/orders']" routerLinkActive="router-link-active" >Orders</a></li>
+            <li><a [routerLink]="['/about-us']" routerLinkActive="router-link-active" >About Us</a></li>
+            <li><a [routerLink]="['/contact-us']" routerLinkActive="router-link-active" >Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+  </footer>
+  <!-- Footer -->
+  
+  <footer *ngIf="!isDesktop">
+    <mat-toolbar class="toolbarNav">
+      <button  mat-flat-button [routerLink]="['/price-list']" routerLinkActive="router-link-active" >
+        <img style="width: 25px; height: 25px;" src="assets/price-list.ico" >
+        <span style="color: rgb(100, 38, 57);">Price List</span>
+      </button>
+  
+      <button mat-flat-button [routerLink]="['/orders']" routerLinkActive="router-link-active" >
+        <img style="width: 25px; height: 25px;" src="assets/order.ico" >
+        <span style="color: rgb(100, 38, 57);">Orders</span>
+      </button>
+      
+      <button  mat-flat-button [routerLink]="['/home']" routerLinkActive="router-link-active" >
+        <img style="width: 25px; height: 25px;" src="assets/home.ico" >
+        <span style="color: rgb(100, 38, 57);">Home</span>
+      </button>
+      <button  mat-flat-button [routerLink]="['/about-us']" routerLinkActive="router-link-active">
+        <img style="width: 25px; height: 25px;" src="assets/about-us.ico" >
+        <span style="color: rgb(100, 38, 57);">About Us</span>
+      </button>
+      <button mat-flat-button [routerLink]="['/contact-us']" routerLinkActive="router-link-active" >
+        <img  style="width: 25px; height: 25px;" src="assets/contact-us.ico" >
+        <span style="color: rgb(100, 38, 57);">Contact Us</span>
+      </button>
+    </mat-toolbar>
+  </footer>
+  
+</div>
+
+
+
+
+
+ 
+
+  

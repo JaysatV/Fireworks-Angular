@@ -1,0 +1,28 @@
+.social-bar {
+    background-color: #e8eaf1;
+  }
+  
+
+.stuck-nav {
+    
+    // padding: 20px;
+     
+     //position:fixed;
+    // color: cornsilk;
+    position:fixed; 
+    top: 0px;
+     
+   
+ }
+
+ .social-bar p {
+    padding: 5px;
+    margin-top: 10px;
+    color: rgb(65, 31, 31);
+    font-size:0.8em;
+    font-weight: bold;
+  }
+
+  .fa-youtube, .fa-instagram, .fa-youtube, .fa-facebook, .fa-whatsapp, .fa-phone {
+    color: rgb(100, 110, 5);
+  }

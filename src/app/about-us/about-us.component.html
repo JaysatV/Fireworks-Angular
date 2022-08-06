@@ -1,0 +1,55 @@
+
+
+  <div class="container">
+    <div class="row social-bar " *ngIf="!isDesktop">
+      <div class="col-md-6 d-flex justify-content-center">
+        <p>3/1363/3B, Sattur Road,
+          RSR Petrol Bunk Backside,
+          Sivakasi </p>
+      </div>
+      <div class="col-md-6 ">
+        <div class="d-flex flex-row-reverse " [class.justify-content-around] = "!isDesktop" >
+          <div class="p-2">
+            <a target="_blank" href="https://www.instagram.com/dharshinisvks/" class="fa fa-instagram"></a>
+          </div>
+          
+          <div class="p-2">
+            <a target="_blank" href="https://www.youtube.com/channel/UC4IdMP_CstIZhu8NHBTcRrA" class="fa fa-youtube"></a>
+          </div>
+          <div class="p-2">
+            <a target="_blank" href="https://www.facebook.com/profile.php?id=100083829273034" class="fa fa-facebook"></a>
+          </div>
+          <div class="p-2">
+            <a target="_blank" href="//api.whatsapp.com/send?phone=+917010857035&text=Hi.." class="fa fa-whatsapp"></a>
+          </div>
+    
+          <div class="p-2">
+            <a href="tel:+917010857035" class="fa fa-phone"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+<div class="row">
+  <div class="col-md-6">
+      <h1 class='text-success'>Welcome!</h1>
+      <h2>Know More About Us</h2>
+      <hr>
+      <p>
+        <strong style="color: #6e3e3e;">Dharshini Crackers Shop</strong>  has its own base and physical store at Sivakasi, TamilNadu and has been there since last 25 years of experience in trading and manufacturing of seasonal/festival crackers. We have fireworks available not only during Diwali but throughout the year. So if you are looking for a fireworks/crackers shop in sivakasi anytime during the year.
+      </p>
+      <p>
+        We provide display that is both astounding and memorable, to suit all budgets, from smaller scale displays to those for the largest private, corporate events or festivals. We ensure variety and exceptional customer service with best value for money.
+      </p>
+
+  </div>
+  <div *ngIf="isDesktop" class="col-md-3 offset-md-3 align-self-end">
+      <img style="height: 400px;" src="../../assets/about-bg.jpg"alt="">
+  </div>
+</div>
+</div>
+
+
+
+
+

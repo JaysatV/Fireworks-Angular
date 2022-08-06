@@ -1,0 +1,39 @@
+<div class="cotainer ">
+  <h2>New <b>Arrivals</b></h2>
+
+  <div  class="d-flex flex-row bd-highlight mb-3 scroller"  style="overflow: auto; overflow-y: scroll;">
+    <div class="p-1 " *ngFor="let nals of NewArrivalsData">
+     
+      <div class="card " [routerLink]="['/price-list']" style="width: 12rem; background-color: rgb(249, 253, 253);" >
+       
+        <img style="height: 150px;" class="card-img-top"  [src]="getImage(nals)" alt="Card image cap">
+        <div class="card-body row card-pad">
+          <div class="form-group col-12">
+            <div class="d-flex flex-column ">
+             
+              <p style="font-size: 12px; padding-top: 2px; padding-bottom: 0px; font-weight: 400; color: rgb(63, 85, 85);">{{nals.product_cat_name}}</p>
+              <p  style="font-size: 14px; margin-top: 0px; font-weight: 500;">{{nals.product_name}}</p>
+              
+              
+              
+              <div class="d-flex flex-row" >
+                <p  style=" color: rgb(92, 95, 90);"><strong> ₹ {{(nals.product_rate - ((nals.product_rate * nals.product_discount) / 100)) | number : '.2-2'}} </strong></p>
+                <p  style="text-decoration: line-through; margin-left: 10px;  color: rgb(153, 158, 149);">₹{{nals.product_rate}}</p>
+                <p  style=" margin-left: 10px;  color: rgb(109, 44, 35); font-weight: 500;">{{nals.product_discount}}% Off</p>
+              </div>
+              <div>
+
+                <a mat-stroked-button color="primary" [routerLink]="['/price-list']" [queryParams]="{id:'p'+ nals.id}" >View More</a>
+              </div>
+            </div>
+            
+          </div>
+         
+          
+        </div>
+        
+      </div>
+    </div>
+   
+  </div>
+</div>

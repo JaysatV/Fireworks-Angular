@@ -1,0 +1,284 @@
+
+<div class="row">
+
+  <div class="col-md-9" *ngIf="isDesktop">
+    <div class="container" id="main">
+       
+      <div *ngFor="let item of groupProducts; let j = index">
+        <div class="row" *ngIf="getCatItemsCount(item.product_data) > 0 && item.visibility != '0'" id="c{{item.cat_id}}">
+          
+          <div class="col-sm-12 d-flex justify-content-center align-items-center" id="detail">
+              <h1 id="shawn"><b>{{j + 1}}. {{item.cat_name}} ( {{discount}}% discount )</b></h1>
+          </div>
+          <table class="table">
+       
+            <thead>
+                <tr>
+                    <td>Code</td>
+                    <td>Image</td>
+                    <td>Product Name</td>
+                    <td>Content</td>
+                    <td>Actual Rate</td>
+                    <td>Off</td>
+                    <td >Purchase Rate</td>
+                    <td >Quantity</td>
+                    <td>Total</td>
+                    
+                </tr>
+            </thead>
+            <tbody *ngFor="let product of item.product_data; let i = index;">
+                <tr *ngIf="product.visibility == 1" id="p{{product.id}}">
+                  <td>#{{product.product_code}}</td>
+                  <td><img [src]="getProductImage(product)" (click)="openImage(getProductImage(product))" style="width: 30px; "/></td>
+                  <td>{{(isEnglishLanguage)?product.product_name: product.product_name_ta}}</td>
+                  <td>{{product.unit_per}} {{product.unit_name}}</td>
+                  <td>₹{{product.product_rate | number : '.2-2'}}</td>
+                  <td>₹{{(product.product_rate * product.product_discount)/100 | number : '.2-2'}} ({{product.product_discount}}%)</td>
+                  <td>₹{{product.p_off_rate | number : '.2-2'}}</td>
+                  <td>
+                      <div *ngIf="product.product_stock > 0"  class="d-flex flex-row bd-highlight col-9">
+                          <div class="bd-highlight" >
+                              <button  (click)="onDecrement(product)" style="height: 40px; text-align: center; color: white;" type="button" class="btn btn-outline-primary">-</button>
+                          </div>
+                          <div class="bd-highlight">
+                              <div  class="form-group" style="width: 60px; " >
+                                  <input [ngClass]="{'total-box-desktop': isDesktop}" (focus)="onFocus($event)" (focusout)="onFocusOut($event)" [value]="product.p_quantity" (keyup)="changeQuantity($event,$event, product)" (keydown)="onChangeQuantity($event)"  style="height: 40px; text-align: center; font-size: 12px;" class="form-control" id="formGroupExampleInput" placeholder="0">
+                                </div>
+                          </div>
+                          <div class="bd-highlight" >
+                              <button  (click)="onIncrement(product)" style="height: 40px; text-align: center; color: white;" type="button" class="btn btn-outline-primary">+</button>
+                          </div>
+                        </div >
+                        <div *ngIf="product.product_stock <= 0">
+                            Out of Stock
+                        </div>
+                  </td>
+                  <td>&#8377;{{product.p_quantity * product.p_off_rate | number : '.2-2'}}</td>
+                </tr>
+      
+               
+                
+            </tbody>
+        </table>
+      </div>
+
+      
+      </div>
+     
+    
+      
+    </div>
+    
+   
+  </div>
+
+
+<!-- 
+<div *ngIf="!isDesktop" class="container d-flex justify-content-center">
+   
+    
+    <div class="row ">
+
+        
+        <div class="col-lg-12 mx-auto ">
+            <ul class="list-group shadow-lg" *ngFor="let product of products">
+                <li class="list-group-item">
+
+                    <div class="media align-item-center mt-3 " ><img class="align-self-center img-fluid mr-md-2" src="https://i.imgur.com/h1i9YBt.png" width="120" height="120">
+                        <div class="media-body" style="margin-left: 8px;">
+                            <p class="mt-0 mb-3 " style="font-size: 14px;">{{product.product_name}}</p>
+                            <div class="row menu-1">
+                                <div class="col-auto font-weight-bold pr-2"> &#8377;{{product.p_off_rate}} </div>
+                                <div class="flex-col"> <small> <del class="text-muted">&#8377;{{product.product_rate}}</del> </small></div>
+                                <div class="col-auto pl-2"><small class="text-success font-weight-bold">{{product.product_discount}}% off </small></div>
+                            </div>
+                            <div class="row mt-4 no-gutters mx-auto">
+
+                                <div class="d-flex flex-row bd-highlight col-9">
+                                    <div class="bd-highlight" >
+                                        <button (click)="onDecrement(product)" style="height: 40px; text-align: center" type="button" class="btn btn-outline-primary">-</button>
+                                    </div>
+                                    <div class="bd-highlight">
+                                        <div class="form-group" style="width: 60px; " >
+                                            <input (focus)="onFocus($event)" (focusout)="onFocusOut($event)" [value]="product.p_quantity" (keyup)="changeQuantity($event,$event, product)" (keydown)="onChangeQuantity($event)"  style="height: 40px; text-align: center; font-size: 12px;" class="form-control" id="formGroupExampleInput" placeholder="0">
+                                          </div>
+                                    </div>
+                                    <div class="bd-highlight" >
+                                        <button (click)="onIncrement(product)" style="height: 40px; text-align: center" type="button" class="btn btn-outline-primary">+</button>
+                                    </div>
+                                  </div>
+
+                                  <div class="col-3"> 
+                                      <p class="total-box">
+                                        &#8377;{{product.p_quantity * product.p_off_rate}}
+                                      </p>
+                                  </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                
+                
+            </ul>
+        </div>
+       
+    </div>
+
+    
+    
+  </div> -->
+
+
+  <div class="stuck-nav row"  *ngIf="!isDesktop">
+    <div class="col-12">
+      <button class="beat-anim" mat-raised-button (click)="onChangeLanguage()" color="primary" >{{(isEnglishLanguage)?'தமிழ் மொழிக்கு மாற்று': 'Change to English'}}</button>
+    </div>
+
+   <div class="col d-flex flex-column top-border" >
+     <div style="color: chartreuse; padding: 5px;">Products </div>
+     <div style="color: rgb(199, 252, 130);">{{items_count}}</div>
+   </div>
+   <div class="col d-flex flex-column top-border" > 
+     <div style="color: chartreuse; padding: 5px;">You Save</div>
+      <div style="color: rgb(240, 236, 220);"><span>₹</span><span>{{discount_total}}</span></div></div>
+   <div class="col d-flex flex-column top-border" >
+    <div style="color: chartreuse; padding: 5px;">Total</div>
+    <div style="color: rgb(243, 219, 219);"><strong><span>₹</span><span>{{order_amount | number : '.2-2'}}</span></strong></div>
+   </div>
+  </div>
+
+
+  <div *ngIf="!isDesktop"  class="table-responsive " style="padding-left: 5px; padding-right: 5px; margin-top: 100px;"  >
+  
+    <div *ngFor="let item of groupProducts; let j = index">
+      <div *ngIf="getCatItemsCount(item.product_data) > 0 && item.visibility != '0'" id="c{{item.cat_id}}">
+        <div class="table-cat">
+          {{j + 1}}. {{item.cat_name}} ( {{discount}}% discount )
+        </div>
+        <table class="table table-bordered tbl" style="background-color: rgb(105, 90, 90); color: darkslategrey;">
+          <thead>
+            <tr>
+              <th scope="col" style="width: 10%;">Image</th>
+              <th scope="col"  style="width: 20%;">Product</th>
+              <th scope="col" style="width: 10%;">Unit</th>
+              <th scope="col" style="width: 15%;">Price</th>
+              <th scope="col" style="width: 10%;">Discount</th>
+              <th scope="col" style="width: 15%;">Quantity</th>
+              <th scope="col" style="width: 20%;">Total</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let product of item.product_data; let i = index">
+            <tr *ngIf="product.visibility == 1" id="p{{product.id}}">
+              
+              <td><img style="width: 24px; height: 24px;" [src]="getProductImage(product)" (click)="openImage(getProductImage(product))"/></td>
+              <td>{{(isEnglishLanguage)?product.product_name: product.product_name_ta}}</td>
+              <td>{{product.unit_per}} {{product.unit_name}}</td>
+              <td><del>₹{{product.product_rate | number : '.2-2'}}</del></td>
+              <td>₹{{product.p_off_rate | number : '.2-2'}}</td>
+              <td>
+                <div *ngIf="product.product_stock > 0" class="form-group" style="margin: 5px;">
+                  <input (focus)="onFocus($event)" pattern="[0-9]*" inputmode="numeric" (focusout)="onFocusOut($event)" [value]="product.p_quantity" (keyup)="changeQuantity($event,$event, product)" (keydown)="onChangeQuantity($event)"  class="form-control total-box-mobile" id="formGroupExampleInput" placeholder="0">
+                </div>
+                <div *ngIf="product.product_stock <= 0">
+                  Out of Stock
+                </div>
+              </td>
+              <td>&#8377;{{product.p_quantity * product.p_off_rate | number : '.2-2'}}</td>
+            </tr>
+           
+          </tbody>
+        </table>
+      </div>
+     
+    </div>
+
+  </div>
+
+
+
+<!-- Order Details -->
+  <div class="col-md-3">
+    <div [ngClass]="{'stuck': isDesktop}">
+        
+    
+        <div class="list-group">
+            <button type="button" class="list-group-item list-group-item-action btn-success active text-center">
+                Order Review
+            </button>
+            <button type="button" class="list-group-item list-group-item-action">
+                Subtotal ({{items_count}} Items)
+                        <div class="pull-right"><span>₹</span><span>{{sub_total | number : '.2-2'}}</span></div>
+            </button>
+            <button type="button" class="list-group-item list-group-item-action">
+                You Save/Discount
+                        <div class="pull-right"><span>₹</span><span>{{discount_total | number : '.2-2'}}</span></div>
+            </button>
+            <button type="button" class="list-group-item list-group-item-action">
+                Packing & <br> Forwording
+                        <div class="pull-right"><span>₹</span><span>{{paf | number : '.2-2'}}</span></div>
+            </button>
+            <button type="button" class="list-group-item list-group-item-action" >
+                Order Total
+                        <div class="pull-right"><strong><span>₹</span><span>{{((order_amount > 0) ? getOrderTotal() : order_amount) |  number : '1.2-2'}}</span></strong></div>
+            </button>
+
+           
+        </div>
+
+        <div class="list-group" style="margin-top: 10px; padding: 5px; background-color: white;" >
+            <button type="button" class="list-group-item list-group-item-action btn-success active text-center">
+                Customer Details
+            </button>
+           
+            
+            <div class="form-group " >
+               
+                <input type="text" [formControl]="CustomerName" class="form-control list-group-item"  placeholder="Enter your Name">
+                
+              </div>
+
+                
+            <div class="form-group">
+               
+                <input type="text" [formControl]="PhoneNumber" class="form-control list-group-item"  placeholder="Enter Phone number">
+                
+              </div>
+
+              <div class="form-group">
+               
+                <input type="text" [formControl]="Email" class="form-control list-group-item"  placeholder="Enter email Address">
+                
+              </div>
+
+              <div class="form-group">
+                
+                <textarea [formControl]="Address" class="form-control list-group-item"  rows="3" placeholder="Enter delivery address"></textarea>
+              </div>
+
+              <label for="exampleFormControlTextarea1" style="background-color: yellow;">*Order Items despatched after successfull paymet</label>
+            <button type="button" style="padding: 10px;" (click)="onConfirmOrder()" class="btn btn-primary btn-lg btn-block">Confirm Order</button>
+    
+           
+        </div>
+        
+
+    </div>
+    
+  </div>
+
+
+</div>
+
+<div *ngIf="isDesktop">
+
+
+  <button mat-raised-button (click)="onChangeLanguage()" color="primary" class="fixedButton beat-anim">{{(isEnglishLanguage)?'தமிழ் மொழிக்கு மாற்று': 'Change to English'}}</button>
+</div>
+
+
+<ngx-ui-loader text="Please wait" fgsType="square-jelly-box"></ngx-ui-loader>
+
+<!-- top order amount for mobile -->
+
+

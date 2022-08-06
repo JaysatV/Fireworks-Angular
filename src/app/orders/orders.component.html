@@ -1,0 +1,179 @@
+<div *ngIf="!hasPhoneNumber" id="logreg-forms" style="padding: 20px;">
+  <div class="form-signin">
+      <h1 class="h3 mb-3 font-weight-normal" style="text-align: center"> Sign in</h1>
+    
+      
+      <input type="text" [formControl]="PhoneNumber" style="margin-bottom: 10px;" class="form-control" placeholder="Enter your phone number"  autofocus="">
+     
+      
+      <button class="btn btn-success btn-block" (click)="onClickSubmit()" ><i class="fas fa-sign-in-alt"></i> View Orders</button>
+      
+     
+      <!-- <p>Don't have an account!</p>  -->
+     
+  </div>
+
+     
+      
+</div>
+
+<div *ngIf="hasPhoneNumber" >
+  <nav class="navbar navbar-light bg-light justify-content-between">
+    <a class="navbar-brand">{{getPhoneNumber()}}</a>
+   
+     
+      <button class="btn btn-outline-danger my-2 my-sm-0" (click)="onLogout()" >Logout</button>
+    
+  </nav>
+
+  <div  style="margin-left: 10px; margin-right: 10px;" *ngFor="let order of OrdersData">
+   
+    <mat-accordion  multi>
+      <mat-expansion-panel style="margin-bottom: 10px;">
+        <mat-expansion-panel-header style="height: 130px; background-color: rgb(241, 234, 234);">
+          <mat-panel-title>
+            <div class="row" style="width: 100%;">
+              <div class="col-md-4">
+                <div class="d-flex justify-content-between">
+                  <div style="margin-right: 10px; margin-top: 10px;">No:<strong>#{{order.id}}</strong></div>
+                  <div style="padding: 10px; background-color: bisque; margin-right: 10px;" >{{getOrderStatus(order.status)}}</div>
+                  <div style="padding: 10px; background-color: rgb(168, 144, 114); margin-right: 10px; color: white;" >{{(order.is_paid > 0)? 'Paid' : 'UnPaid'}}</div>
+                  
+                  
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="d-flex justify-content-between">
+                  <div style="margin-top: 8px;"><strong>{{order.customer_name}}</strong></div>
+                  <div  style="margin-top: 10px;">{{order.created_at | date :'dd-MMM-yy h:mm a' }}</div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="d-flex justify-content-between  mt-3">
+                
+                  <div >Items: <strong>{{order.items_count}}</strong></div>
+                  <div >Amount: ₹<strong>{{order.total_amount}}</strong></div>
+                  
+                </div>
+              </div>
+            </div>
+            
+            
+            
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+    
+        <div class="row">
+          <div class="col-md-6">
+            <div class="table-responsive ">
+              <table class="table table-bordered tbl" >
+                <thead>
+                  <tr>
+                  
+                    <th scope="col"  style="width: 20%;">Product</th>
+                    <th scope="col" style="width: 15%;">Price</th>
+                    <th scope="col" style="width: 10%;">Discount</th>
+                    <th scope="col" style="width: 20%;">Discount Amount</th>
+                    <th scope="col" style="width: 15%;">Quantity</th>
+                    <th scope="col" style="width: 20%;">Total</th>
+                  </tr>
+                </thead>
+                <tbody *ngFor="let item of order.order_items; let i = index">
+                  <tr>
+                    
+                    
+                    <td>{{item.item_name}}</td>
+                  
+                    <td>₹{{item.item_rate}}</td>
+                    <td>{{item.item_discount}}%</td>
+                    <td>₹{{item.item_discount_total}}</td>
+                    <td>{{item.item_quantity}}</td>
+                    <td>₹{{item.item_total}}</td>
+                  </tr>
+                 
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card " >
+              <div class="card-header text-center">
+                Order Details
+              </div>
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-6">
+                    <p>Items Total</p>
+                  </div>
+                  <div class="col-6">
+                    <p>₹ {{order.items_total | number : '1.2-2'}}</p>
+                  </div>
+      
+                </div>
+                <div class="dropdown-divider"></div>
+      
+                <div class="row pt-2">
+                  <div class="col-6">
+                    <p>Discount</p>
+                  </div>
+                  <div class="col-6">
+                    <p>(-) ₹ {{order.discount_amount | number : '1.2-2'}}</p>
+                  </div>
+                </div>
+                <div class="dropdown-divider"></div>
+      
+                <div class="row pt-2">
+                  <div class="col-6">
+                    <p>Order Amount</p>
+                  </div>
+                  <div class="col-6">
+                    <p><strong> ₹ {{+order.total_amount - +order.paf_charges | number : '1.2-2'}}</strong></p>
+                  </div>
+                </div>
+
+                <div class="dropdown-divider"></div>
+                <div class="row pt-2">
+                  <div class="col-6">
+                    <p>Packing Charges</p>
+                  </div>
+                  <div class="col-6">
+                    <p>(+) ₹ {{order.paf_charges | number : '1.2-2'}}</p>
+                  </div>
+                </div>
+      
+              </div>
+              <div class="card-footer text-center">
+                Total Amount: ₹ <strong>{{order.total_amount | number : '1.2-2'}}</strong> 
+              </div>
+            </div>
+          </div>
+        </div>
+        
+    
+        
+      </mat-expansion-panel>
+     
+    </mat-accordion>
+  </div>
+
+
+  <div *ngIf="OrdersData.length == 0">
+    <div class="row">
+      <div class="col-md-12">
+          <div class="card">
+              
+              <div class="card-body cart">
+                  <div class="col-sm-12 empty-cart-cls text-center"> <img src="https://i.imgur.com/dCdflKN.png" width="130" height="130" class="img-fluid mb-4 mr-3">
+                      <h3><strong>No Orders Yet</strong></h3>
+                     
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  </div>
+
+  
+</div>
+
+<ngx-ui-loader text="Please wait" fgsType="square-jelly-box"></ngx-ui-loader>

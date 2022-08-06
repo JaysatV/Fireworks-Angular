@@ -1,0 +1,375 @@
+html {
+    scroll-behavior: smooth;
+}
+
+.fixedButton{
+    position: fixed;
+    bottom: 10px;
+    left: 30px; 
+    
+}
+
+
+
+body {
+    font-family: 'Rubik', sans-serif
+}
+
+.container {
+    margin-top: 50px
+}
+
+#baf {
+    position: absolute;
+    left: 0vw;
+    font-size: 2.5vw
+}
+
+#baf a {
+    color: rgb(255, 255, 255, 0.5)
+}
+
+#upg {
+    border-radius: 25px;
+    margin: 1vh;
+    background: inherit;
+    color: white;
+    border: 1px solid white
+}
+
+#user {
+    font-size: 3vh;
+    color: white;
+    position: relative;
+    bottom: 0.5vh
+}
+
+#user:hover {
+    background: inherit
+}
+
+.input-group-addon {
+    background-color: black;
+    color: white
+}
+
+.navbar {
+    background-color: inherit
+}
+
+#sm {
+    height: 20vh;
+    width: 20vh;
+    border-radius: 5vw
+}
+
+#main {
+    background-image: linear-gradient(#006064, #839173);
+    padding-bottom: 10px;
+}
+
+#photo {
+    padding: 15px;
+}
+
+#detail {
+    padding-top: 20px;
+    color: white;
+   
+}
+
+#play {
+    background-color: green;
+    color: white;
+    width: 80px;
+    border-radius: 25px
+}
+
+#like {
+    color: white;
+    height: 40px;
+    width: 40px;
+    border-radius: 25px;
+    background: inherit;
+    border: 1px solid white
+}
+
+#more {
+    color: white;
+    height: 40px;
+    width: 40px;
+    border-radius: 25px;
+    background: inherit;
+    border: 1px solid white
+}
+
+#detail h1 {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+tbody {
+    color: white
+}
+
+thead {
+    color: rgb(255, 255, 255, 0.5)
+}
+
+.table {}
+
+tbody tr:hover {
+    background-color: green
+}
+
+#dir {
+    font-size: 5vh
+}
+
+#dir a {
+    color: white;
+    position: relative;
+    bottom: 1vh
+}
+
+#dir a:hover {
+    background: inherit
+}
+
+#dir a:focus {
+    background: inherit
+}
+
+#play:hover {
+    background-color: #a5d6a7
+}
+
+@media only screen and (max-width: 425px) {
+    #dir {
+        display: none
+    }
+
+    #sm {
+        position: relative;
+        left: 30vw;
+        border-radius: 10vh
+    }
+}
+
+@media only screen and (min-width: 426px) and (max-width: 767px) {
+    #dir {
+        display: none
+    }
+
+    #sm {
+        position: relative;
+        left: 35vw;
+        border-radius: 10vh
+    }
+}
+
+
+// For Mobile
+
+body {
+    background: #eee
+}
+
+.container {
+    margin-top: 20px
+}
+
+.media img {
+    height: 100px;
+    width: 100px
+}
+
+.btn {
+    border: 1px solid rgb(231, 231, 231);
+    font-size: 0.7rem !important;
+    font-weight: bolder;
+    padding: 2px;
+    border-radius: 0px
+}
+
+.custom-select,
+.btn:focus,
+.btn:active {
+    outline: none !important;
+    box-shadow: none !important
+}
+
+.btn-outline-dark:hover {
+    color: #fff !important;
+    background-color: #2196F3 !important;
+    border-color: #fff !important
+}
+
+p {
+    font-size: 0.7em;
+    font-weight: 700
+}
+
+
+.custom-select-lg {
+    border-radius: 0px;
+    height: calc(1.8em + 0.6rem + 14px);
+    font-size: 12px !important;
+    padding-right: 2.8rem
+}
+
+.menu-1 {
+    font-size: 14px
+}
+.stuck {
+    top: 60px;
+    bottom:0;
+    position:fixed;
+    overflow-y:scroll;
+    overflow-x:hidden;
+}
+
+.stuck-nav {
+    
+   // padding: 20px;
+    
+    //position:fxed;
+   // color: cornsilk;
+    position: fixed;
+   top: 0px;
+   background-color: #473f1c;  
+   width: 100%;
+    margin-left: 15px;
+    height: 100px;
+    color: white;
+    text-align: center;
+   
+}
+
+.top-border {
+    border-style: solid;
+    border-width: 0.5px;
+}
+.social-bar {
+    background-color: #2b45a1;
+    width: 100%;
+  }
+  
+
+
+ .social-bar p {
+    padding: 5px;
+    margin-top: 10px;
+    color: rgb(65, 31, 31);
+    font-size:0.8em;
+    font-weight: bold;
+  }
+.sticky-button {
+    background-color:rgb(53, 96, 235); 
+    padding: 10px;
+    width: 100%;
+    font-weight: bold;
+    font-size: medium;
+    color: rgb(255, 255, 255);
+   }
+
+.quantity{
+    width: 200px;
+    height: 100px;
+}
+
+input[type="text"] {
+    border: 1px solid rgb(231, 219, 255);
+    border-radius:0px;
+  }
+  input[type="text"]:focus {
+    outline: none
+  }
+
+.total-box {
+    border: 1px solid rgb(231, 219, 255);
+    border-radius:0px;
+    padding-top: 9px;
+    padding-bottom: 9px;
+    padding-right: 5px;
+    padding-left: 5px;
+    text-align: center;
+    margin-left: 5px;
+    width: 50px;
+    background-color: blanchedalmond;
+    color: darkgreen;
+}
+
+.total-box-desktop {
+    border: 1px solid rgb(231, 219, 255);
+    border-radius:0px;
+    padding-top: 9px;
+    padding-bottom: 9px;
+    padding-right: 5px;
+    padding-left: 5px;
+    text-align: center;
+    margin-left: 5px;
+    width: 50px;
+    background: transparent;
+    color: rgb(255, 255, 255);
+}
+
+.total-box-mobile {
+   
+    text-align: center;
+    font-size: 10px;
+    background: transparent;
+    color: rgb(255, 255, 255);
+}
+
+.button-color-desktop{
+    color: white;
+}
+
+.table-mobile tr th:nth-child(2) { 
+    width: 80%;  /*Custom your width*/
+ }
+
+.tbl th {
+    text-align: center;
+    font-size: 9px;
+    background-color: rgb(117, 51, 182);
+}
+
+.tbl td {
+    font-size: 10px;
+    padding: 2px;
+    height: 50px;
+    text-align: center !important;
+    
+}
+
+.tbl > tbody > tr > td {
+    vertical-align: middle;
+}
+
+.table-cat{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    color: rgb(245, 245, 245);
+    background-color: rgb(95, 85, 45);
+}
+
+.beat-anim {
+	
+	animation: beat .60s infinite alternate;
+	transform-origin: center;
+}
+
+/* Heart beat animation */
+@keyframes beat{
+	to { transform: scale(1.2); }
+}
+
+.beat-anim:hover{
+    animation: none;
+     
+ }
